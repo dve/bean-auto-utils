@@ -12,102 +12,96 @@ public class Demo {
   private float floatMember;
   private double doubleMember;
   private byte byteMember;
-  private List<String> nonPrimitiveMmber;
-  private int[] intArrayMember;
-  private String[] nonPrimitiveArrayMember;
-
-  @Override
-  public int hashCode() {
-    return DemoBeanUtil.doToHashCode(this);
-  }
-
-  @Override
-  public String toString() {
-    return DemoBeanUtil.doToString(this);
-  }
+  private int[] arrayMember;
+  private List<String> nonPrimitiveMember;
 
   @Override
   public boolean equals(Object obj) {
     return DemoBeanUtil.doEquals(this, obj);
   }
 
-  public int getIntMember() {
-    return intMember;
-  }
 
-  public void setIntMember(int intMember) {
-    this.intMember = intMember;
-  }
 
-  public boolean isBoolenMember() {
-    return boolenMember;
-  }
-
-  public void setBoolenMember(boolean boolenMember) {
-    this.boolenMember = boolenMember;
-  }
-
-  public long getLongMember() {
-    return longMember;
-  }
-
-  public void setLongMember(long longMember) {
-    this.longMember = longMember;
-  }
-
-  public short getShortMember() {
-    return shortMember;
-  }
-
-  public void setShortMember(short shortMember) {
-    this.shortMember = shortMember;
-  }
-
-  public float getFloatMember() {
-    return floatMember;
-  }
-
-  public void setFloatMember(float floatMember) {
-    this.floatMember = floatMember;
+  public byte getByteMember() {
+    return byteMember;
   }
 
   public double getDoubleMember() {
     return doubleMember;
   }
 
-  public void setDoubleMember(double doubleMember) {
-    this.doubleMember = doubleMember;
+  public float getFloatMember() {
+    return floatMember;
   }
 
-  public byte getByteMember() {
-    return byteMember;
+  public int[] getArrayMember() {
+    return arrayMember;
+  }
+
+  public int getIntMember() {
+    return intMember;
+  }
+
+  public long getLongMember() {
+    return longMember;
+  }
+
+  public List<String> getNonPrimitiveMember() {
+    return nonPrimitiveMember;
+  }
+
+  public short getShortMember() {
+    return shortMember;
+  }
+
+  @Override
+  public int hashCode() {
+    return DemoBeanUtil.doToHashCode(this);
+  }
+
+  public boolean isBoolenMember() {
+    return boolenMember;
+  }
+
+
+  public void setBoolenMember(boolean boolenMember) {
+    this.boolenMember = boolenMember;
   }
 
   public void setByteMember(byte byteMember) {
     this.byteMember = byteMember;
   }
 
-  public List<String> getNonPrimitiveMmber() {
-    return nonPrimitiveMmber;
+  public void setDoubleMember(double doubleMember) {
+    this.doubleMember = doubleMember;
   }
 
-  public void setNonPrimitiveMmber(List<String> nonPrimitiveMmber) {
-    this.nonPrimitiveMmber = nonPrimitiveMmber;
+  public void setFloatMember(float floatMember) {
+    this.floatMember = floatMember;
   }
 
-  public int[] getIntArrayMember() {
-    return intArrayMember;
+  public void setArrayMember(int[] intArrayMember) {
+    this.arrayMember = intArrayMember;
   }
 
-  public void setIntArrayMember(int[] intArrayMember) {
-    this.intArrayMember = intArrayMember;
+  public void setIntMember(int intMember) {
+    this.intMember = intMember;
   }
 
-  public String[] getNonPrimitiveArrayMember() {
-    return nonPrimitiveArrayMember;
+  public void setLongMember(long longMember) {
+    this.longMember = longMember;
   }
 
-  public void setNonPrimitiveArrayMember(String[] nonPrimitiveArrayMember) {
-    this.nonPrimitiveArrayMember = nonPrimitiveArrayMember;
+  public void setNonPrimitiveMember(List<String> nonPrimitiveMember) {
+    this.nonPrimitiveMember = nonPrimitiveMember;
+  }
+
+  public void setShortMember(short shortMember) {
+    this.shortMember = shortMember;
+  }
+
+  @Override
+  public String toString() {
+    return DemoBeanUtil.doToString(this);
   }
 }

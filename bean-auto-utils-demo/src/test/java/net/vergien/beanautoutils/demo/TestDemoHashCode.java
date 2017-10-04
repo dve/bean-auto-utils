@@ -26,7 +26,7 @@ public class TestDemoHashCode {
   public void testHashCode_nonPrimitive() {
     Demo lhs = new Demo();
     Demo rhs = new Demo();
-    rhs.setNonPrimitiveMmber(new ArrayList<>());
+    rhs.setNonPrimitiveMember(new ArrayList<>());
     assertThat(lhs.hashCode(), is(not((rhs.hashCode()))));
   }
 }
