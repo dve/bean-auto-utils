@@ -40,10 +40,9 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
       List<FieldInfo> fieldInfos = new ArrayList<>();
       for (VariableElement variableElement : ElementFilter
           .fieldsIn(typeElement.getEnclosedElements())) {
-        System.out.print(variableElement.getSimpleName());
+
         TypeKind kind = variableElement.asType().getKind();
-        System.out.println(" - " + variableElement.getKind() + " - " + kind + " - primitve? "
-            + kind.isPrimitive());
+
         fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
             createGetter(variableElement)));
       }
