@@ -72,13 +72,11 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
   }
 
   private void writeHelper(String className, List<FieldInfo> fieldInfos) throws IOException {
-
-    BeanUtilClass jclass = new BeanUtilClass(className, fieldInfos);
-
+    BeanUtilClass beanUtilClass = new BeanUtilClass(className, fieldInfos);
     JavaFileObject builderFile =
-        processingEnv.getFiler().createSourceFile(jclass.getBeanUtilClassName());
+        processingEnv.getFiler().createSourceFile(beanUtilClass.getBeanUtilClassName());
     try (PrintWriter out = new PrintWriter(builderFile.openWriter())) {
-      out.print(jclass.getCode());
+      out.print(beanUtilClass.getCode());
     }
   }
 
