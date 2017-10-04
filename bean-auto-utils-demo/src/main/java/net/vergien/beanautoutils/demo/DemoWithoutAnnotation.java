@@ -4,53 +4,139 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DemoWithoutAnnotation {
-  private int primitive;
-  private short shortMember;
-  private byte byteMember;
-
-  private char charMember;
-
-  private boolean boolenPrimitive;
-
+  private int intMember;
+  private boolean boolenMember;
   private long longMember;
-
-  private double doubleMember;
-  private double doubleMember2;
+  private short shortMember;
   private float floatMember;
+  private double doubleMember;
+  private byte byteMember;
+  private List<String> nonPrimitiveMmber;
+  private int[] intArrayMember;
+  private String[] nonPrimitiveArrayMember;
 
-  private List<String> nonPrimitive;
-  private int[] primitiveArray;
-  private String[] nonPrimitiveArray;
+  public int getIntMember() {
+    return intMember;
+  }
+
+  public void setIntMember(int intMember) {
+    this.intMember = intMember;
+  }
+
+  public boolean isBoolenMember() {
+    return boolenMember;
+  }
+
+  public void setBoolenMember(boolean boolenMember) {
+    this.boolenMember = boolenMember;
+  }
+
+  public long getLongMember() {
+    return longMember;
+  }
+
+  public void setLongMember(long longMember) {
+    this.longMember = longMember;
+  }
+
+  public short getShortMember() {
+    return shortMember;
+  }
+
+  public void setShortMember(short shortMember) {
+    this.shortMember = shortMember;
+  }
+
+  public float getFloatMember() {
+    return floatMember;
+  }
+
+  public void setFloatMember(float floatMember) {
+    this.floatMember = floatMember;
+  }
+  public double getDoubleMember() {
+    return doubleMember;
+  }
+
+  public void setDoubleMember(double doubleMember) {
+    this.doubleMember = doubleMember;
+  }
+
+  public byte getByteMember() {
+    return byteMember;
+  }
+
+  public void setByteMember(byte byteMember) {
+    this.byteMember = byteMember;
+  }
+
+  public List<String> getNonPrimitiveMmber() {
+    return nonPrimitiveMmber;
+  }
+
+  public void setNonPrimitiveMmber(List<String> nonPrimitiveMmber) {
+    this.nonPrimitiveMmber = nonPrimitiveMmber;
+  }
+
+  public int[] getIntArrayMember() {
+    return intArrayMember;
+  }
+
+  public void setIntArrayMember(int[] intArrayMember) {
+    this.intArrayMember = intArrayMember;
+  }
+
+  public String[] getNonPrimitiveArrayMember() {
+    return nonPrimitiveArrayMember;
+  }
+
+  public void setNonPrimitiveArrayMember(String[] nonPrimitiveArrayMember) {
+    this.nonPrimitiveArrayMember = nonPrimitiveArrayMember;
+  }
 
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
-    builder.append("DemoWithoutAnnotation [primitive=");
-    builder.append(primitive);
-    builder.append(", shortMember=");
-    builder.append(shortMember);
-    builder.append(", byteMember=");
-    builder.append(byteMember);
-    builder.append(", charMember=");
-    builder.append(charMember);
-    builder.append(", boolenPrimitive=");
-    builder.append(boolenPrimitive);
+    builder.append("DemoWithoutAnnotation [intMember=");
+    builder.append(intMember);
+    builder.append(", boolenMember=");
+    builder.append(boolenMember);
     builder.append(", longMember=");
     builder.append(longMember);
-    builder.append(", doubleMember=");
-    builder.append(doubleMember);
-    builder.append(", doubleMember2=");
-    builder.append(doubleMember2);
+    builder.append(", shortMember=");
+    builder.append(shortMember);
     builder.append(", floatMember=");
     builder.append(floatMember);
-    builder.append(", nonPrimitive=");
-    builder.append(nonPrimitive);
-    builder.append(", primitiveArray=");
-    builder.append(Arrays.toString(primitiveArray));
-    builder.append(", nonPrimitiveArray=");
-    builder.append(Arrays.toString(nonPrimitiveArray));
+    builder.append(", doubleMember=");
+    builder.append(doubleMember);
+    builder.append(", byteMember=");
+    builder.append(byteMember);
+    builder.append(", nonPrimitiveMmber=");
+    builder.append(nonPrimitiveMmber);
+    builder.append(", intArrayMember=");
+    builder.append(Arrays.toString(intArrayMember));
+    builder.append(", nonPrimitiveArrayMember=");
+    builder.append(Arrays.toString(nonPrimitiveArrayMember));
     builder.append("]");
     return builder.toString();
+  }
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + (boolenMember ? 1231 : 1237);
+    result = prime * result + byteMember;
+    long temp;
+    temp = Double.doubleToLongBits(doubleMember);
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    result = prime * result + Float.floatToIntBits(floatMember);
+    result = prime * result + Arrays.hashCode(intArrayMember);
+    result = prime * result + intMember;
+    result = prime * result + (int) (longMember ^ (longMember >>> 32));
+    result = prime * result + Arrays.hashCode(nonPrimitiveArrayMember);
+    result = prime * result + ((nonPrimitiveMmber == null) ? 0 : nonPrimitiveMmber.hashCode());
+    result = prime * result + shortMember;
+    return result;
   }
 
   @Override
@@ -65,41 +151,35 @@ public class DemoWithoutAnnotation {
       return false;
     }
     DemoWithoutAnnotation other = (DemoWithoutAnnotation) obj;
-    if (boolenPrimitive != other.boolenPrimitive) {
+    if (boolenMember != other.boolenMember) {
       return false;
     }
     if (byteMember != other.byteMember) {
       return false;
     }
-    if (charMember != other.charMember) {
-      return false;
-    }
     if (Double.doubleToLongBits(doubleMember) != Double.doubleToLongBits(other.doubleMember)) {
-      return false;
-    }
-    if (Double.doubleToLongBits(doubleMember2) != Double.doubleToLongBits(other.doubleMember2)) {
       return false;
     }
     if (Float.floatToIntBits(floatMember) != Float.floatToIntBits(other.floatMember)) {
       return false;
     }
+    if (!Arrays.equals(intArrayMember, other.intArrayMember)) {
+      return false;
+    }
+    if (intMember != other.intMember) {
+      return false;
+    }
     if (longMember != other.longMember) {
       return false;
     }
-    if (nonPrimitive == null) {
-      if (other.nonPrimitive != null) {
+    if (!Arrays.equals(nonPrimitiveArrayMember, other.nonPrimitiveArrayMember)) {
+      return false;
+    }
+    if (nonPrimitiveMmber == null) {
+      if (other.nonPrimitiveMmber != null) {
         return false;
       }
-    } else if (!nonPrimitive.equals(other.nonPrimitive)) {
-      return false;
-    }
-    if (!Arrays.equals(nonPrimitiveArray, other.nonPrimitiveArray)) {
-      return false;
-    }
-    if (primitive != other.primitive) {
-      return false;
-    }
-    if (!Arrays.equals(primitiveArray, other.primitiveArray)) {
+    } else if (!nonPrimitiveMmber.equals(other.nonPrimitiveMmber)) {
       return false;
     }
     if (shortMember != other.shortMember) {
@@ -108,121 +188,5 @@ public class DemoWithoutAnnotation {
     return true;
   }
 
-  public byte getByteMember() {
-    return byteMember;
-  }
 
-  public char getCharMember() {
-    return charMember;
-  }
-
-  public double getDoubleMember() {
-    return doubleMember;
-  }
-
-  public double getDoubleMember2() {
-    return doubleMember2;
-  }
-
-  public float getFloatMember() {
-    return floatMember;
-  }
-
-  public long getLongMember() {
-    return longMember;
-  }
-
-  public List<String> getNonPrimitive() {
-    return nonPrimitive;
-  }
-
-  public String[] getNonPrimitiveArray() {
-    return nonPrimitiveArray;
-  }
-
-  public int getPrimitive() {
-    return primitive;
-  }
-
-  public int[] getPrimitiveArray() {
-    return primitiveArray;
-  }
-
-  public short getShortMember() {
-    return shortMember;
-  }
-
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + (boolenPrimitive ? 1231 : 1237);
-    result = prime * result + byteMember;
-    result = prime * result + charMember;
-    long temp;
-    temp = Double.doubleToLongBits(doubleMember);
-    result = prime * result + (int) (temp ^ (temp >>> 32));
-    temp = Double.doubleToLongBits(doubleMember2);
-    result = prime * result + (int) (temp ^ (temp >>> 32));
-    result = prime * result + Float.floatToIntBits(floatMember);
-    result = prime * result + (int) (longMember ^ (longMember >>> 32));
-    result = prime * result + ((nonPrimitive == null) ? 0 : nonPrimitive.hashCode());
-    result = prime * result + Arrays.hashCode(nonPrimitiveArray);
-    result = prime * result + primitive;
-    result = prime * result + Arrays.hashCode(primitiveArray);
-    result = prime * result + shortMember;
-    return result;
-  }
-
-  public boolean isBoolenPrimitive() {
-    return boolenPrimitive;
-  }
-
-  public void setBoolenPrimitive(boolean boolenPrimitive) {
-    this.boolenPrimitive = boolenPrimitive;
-  }
-
-  public void setByteMember(byte byteMember) {
-    this.byteMember = byteMember;
-  }
-
-  public void setCharMember(char charMember) {
-    this.charMember = charMember;
-  }
-
-  public void setDoubleMember(double doubleMember) {
-    this.doubleMember = doubleMember;
-  }
-
-  public void setDoubleMember2(double doubleMember2) {
-    this.doubleMember2 = doubleMember2;
-  }
-
-  public void setFloatMember(float floatMember) {
-    this.floatMember = floatMember;
-  }
-
-  public void setLongMember(long longMember) {
-    this.longMember = longMember;
-  }
-
-  public void setNonPrimitive(List<String> nonPrimitive) {
-    this.nonPrimitive = nonPrimitive;
-  }
-
-  public void setNonPrimitiveArray(String[] nonPrimitiveArray) {
-    this.nonPrimitiveArray = nonPrimitiveArray;
-  }
-
-  public void setPrimitive(int primitive) {
-    this.primitive = primitive;
-  }
-
-  public void setPrimitiveArray(int[] primitiveArray) {
-    this.primitiveArray = primitiveArray;
-  }
-
-  public void setShortMember(short shortMember) {
-    this.shortMember = shortMember;
-  }
 }

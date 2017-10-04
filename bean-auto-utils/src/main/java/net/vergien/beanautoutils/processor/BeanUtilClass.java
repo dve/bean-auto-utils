@@ -251,7 +251,7 @@ public class BeanUtilClass {
         builder.append("    result = prime * result + ((");
         builder.append(getterCall);
         builder.append(" == null) ? 0 : ");
-        builder.append(variableName);
+        builder.append(getterCall);
         builder.append(".hashCode());");
       } else {
         switch (fieldInfo.getKind()) {
