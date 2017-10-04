@@ -122,4 +122,5 @@
 			</build>
 		</profile>
 	</profiles>
+	<name>Bean-Auto-Utils</name>
 </project>
