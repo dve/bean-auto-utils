@@ -224,6 +224,7 @@ public class BeanUtilClass {
       lineBreak();
       if (it.hasNext()) {
         builder.append("    builder.append(\", \");");
+        lineBreak();
       }
     }
     builder.append("    builder.append(\"]\");");
