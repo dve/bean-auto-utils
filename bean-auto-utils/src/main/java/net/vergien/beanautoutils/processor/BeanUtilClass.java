@@ -223,14 +223,13 @@ public class BeanUtilClass {
       }
       lineBreak();
       if (it.hasNext()) {
-        lineBreak();
         builder.append("    builder.append(\", \");");
       }
-      lineBreak();
     }
     builder.append("    builder.append(\"]\");");
     lineBreak();
     builder.append("    return builder.toString();");
+    lineBreak();
     builder.append("  }");
     lineBreak();
   }
