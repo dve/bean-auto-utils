@@ -81,6 +81,7 @@ public class BeanUtilClass {
     builder.append("      return true;");
     lineBreak();
     builder.append("    }");
+    lineBreak();
     builder.append("    if (obj == null) {");
     lineBreak();
     builder.append("      return false;");
@@ -165,13 +166,14 @@ public class BeanUtilClass {
         case BYTE:
         case LONG:
         case SHORT:
-          builder.append("    if(");
+          builder.append("    if (");
           builder.append(getterCall);
           builder.append(" != ");
           builder.append(otherGetterCall);
           builder.append(") {");
           lineBreak();
           builder.append("      return false;");
+          lineBreak();
           builder.append("    }");
           break;
         default:
