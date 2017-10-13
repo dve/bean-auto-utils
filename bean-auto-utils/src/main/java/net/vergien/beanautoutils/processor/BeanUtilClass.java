@@ -60,6 +60,16 @@ public class BeanUtilClass {
     builder.append(beanUtilSimpleClassName);
     builder.append(" {");
     lineBreak();
+    builder.append("  private ");
+    builder.append(beanUtilSimpleClassName);
+    builder.append("() {");
+    lineBreak();
+    builder.append(
+        "    throw new java.lang.IllegalAccessError(\"Utility class\");");
+    lineBreak();
+    builder.append("  }");
+    lineBreak();
+    lineBreak();
   }
 
   private void appendDoEquals() {
