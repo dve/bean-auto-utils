@@ -104,7 +104,7 @@ public class BeanUtilClass {
       String otherGetterCall = "other." + fieldInfo.getGetterName();
       switch (fieldInfo.getKind()) {
         case ARRAY:
-          builder.append("    if(!java.util.Arrays.equals(");
+          builder.append("    if (!java.util.Arrays.equals(");
           builder.append(getterCall);
           builder.append(", ");
           builder.append(otherGetterCall);
@@ -115,7 +115,7 @@ public class BeanUtilClass {
           builder.append("    }");
           break;
         case DOUBLE:
-          builder.append("    if(Double.doubleToLongBits(");
+          builder.append("    if (Double.doubleToLongBits(");
           builder.append(getterCall);
           builder.append(") != (Double.doubleToLongBits(");
           builder.append(otherGetterCall);
@@ -126,7 +126,7 @@ public class BeanUtilClass {
           builder.append("    }");
           break;
         case FLOAT:
-          builder.append("    if(Float.floatToIntBits(");
+          builder.append("    if (Float.floatToIntBits(");
           builder.append(getterCall);
           builder.append(") != (Float.floatToIntBits(");
           builder.append(otherGetterCall);
