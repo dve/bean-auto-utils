@@ -1,6 +1,5 @@
 package net.vergien.beanautoutils.processor;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -105,7 +104,7 @@ public class BeanUtilClass {
       String otherGetterCall = "other." + fieldInfo.getGetterName();
       switch (fieldInfo.getKind()) {
         case ARRAY:
-          builder.append("    if(!Arrays.equals(");
+          builder.append("    if(!java.util.Arrays.equals(");
           builder.append(getterCall);
           builder.append(", ");
           builder.append(otherGetterCall);
@@ -214,7 +213,7 @@ public class BeanUtilClass {
       builder.append("=\");");
       lineBreak();
       if (fieldInfo.getKind() == TypeKind.ARRAY) {
-        builder.append("    builder.append(Arrays.toString(");
+        builder.append("    builder.append(java.util.Arrays.toString(");
         builder.append(variableName + "." + fieldInfo.getGetterName());
         builder.append("));");
       } else {
@@ -254,7 +253,7 @@ public class BeanUtilClass {
     for (FieldInfo fieldInfo : fieldInfos) {
       String getterCall = variableName + "." + fieldInfo.getGetterName();
       if (fieldInfo.isArray()) {
-        builder.append("    result = prime * result + Arrays.hashCode(");
+        builder.append("    result = prime * result + java.util.Arrays.hashCode(");
         builder.append(getterCall);
         builder.append(");");
       } else if (!fieldInfo.isPrimitive()) {
@@ -350,7 +349,6 @@ public class BeanUtilClass {
     builder = new StringBuilder();
     appendPackage();
     appendImport(Generated.class);
-    appendImport(Arrays.class);
     appendClassHeader();
     indentation = indentation + 2;
     appendDoToString();
