@@ -31,26 +31,29 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
     for (TypeElement annotation : annotations) {
       Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
-      TypeElement typeElement = (TypeElement) annotatedElements.iterator().next();
-      if (typeElement.getKind() != ElementKind.CLASS) {
-        error("The annotation @" + Bean.class.getSimpleName() + " can only be applied on classes.",
-            typeElement);
-      }
+      for (Element e : annotatedElements) {
+        TypeElement typeElement = (TypeElement) e;
+        if (typeElement.getKind() != ElementKind.CLASS) {
+          error(
+              "The annotation @" + Bean.class.getSimpleName() + " can only be applied on classes.",
+              typeElement);
+        }
 
-      List<FieldInfo> fieldInfos = new ArrayList<>();
-      for (VariableElement variableElement : ElementFilter
-          .fieldsIn(typeElement.getEnclosedElements())) {
+        List<FieldInfo> fieldInfos = new ArrayList<>();
+        for (VariableElement variableElement : ElementFilter
+            .fieldsIn(typeElement.getEnclosedElements())) {
 
-        TypeKind kind = variableElement.asType().getKind();
+          TypeKind kind = variableElement.asType().getKind();
 
-        fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
-            createGetter(variableElement)));
-      }
-      try {
-        writeHelper(typeElement.getQualifiedName().toString(), fieldInfos);
-      } catch (IOException e1) {
-        e1.printStackTrace();
-        error("Failure writing code", typeElement);
+          fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
+              createGetter(variableElement)));
+        }
+        try {
+          writeHelper(typeElement.getQualifiedName().toString(), fieldInfos);
+        } catch (IOException e1) {
+          e1.printStackTrace();
+          error("Failure writing code", typeElement);
+        }
       }
     }
 
