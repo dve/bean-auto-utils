@@ -13,6 +13,7 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeKind;
@@ -43,10 +44,13 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
         for (VariableElement variableElement : ElementFilter
             .fieldsIn(typeElement.getEnclosedElements())) {
 
-          TypeKind kind = variableElement.asType().getKind();
 
-          fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
-              createGetter(variableElement)));
+          if (!isConstant(variableElement)) {
+            TypeKind kind = variableElement.asType().getKind();
+
+            fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
+                createGetter(variableElement)));
+          }
         }
         try {
           writeHelper(typeElement.getQualifiedName().toString(), fieldInfos);
@@ -58,6 +62,11 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
     }
 
     return true;
+  }
+
+  private boolean isConstant(VariableElement variableElement) {
+    Set<Modifier> modifiers = variableElement.getModifiers();
+    return modifiers.contains(Modifier.STATIC) && modifiers.contains(Modifier.FINAL);
   }
 
   private String createGetter(VariableElement variableElement) {

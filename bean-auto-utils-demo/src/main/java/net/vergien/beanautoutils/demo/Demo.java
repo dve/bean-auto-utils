@@ -5,6 +5,7 @@ import net.vergien.beanautoutils.annotation.Bean;
 
 @Bean
 public class Demo {
+  public static final String A_CONSTANT = "This never changes.";
   private int intMember;
   private boolean boolenMember;
   private long longMember;
