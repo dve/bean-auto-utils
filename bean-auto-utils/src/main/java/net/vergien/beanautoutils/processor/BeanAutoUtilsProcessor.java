@@ -17,6 +17,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeKind;
+import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.ElementFilter;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
@@ -40,18 +41,8 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
               typeElement);
         }
 
-        List<FieldInfo> fieldInfos = new ArrayList<>();
-        for (VariableElement variableElement : ElementFilter
-            .fieldsIn(typeElement.getEnclosedElements())) {
+        List<FieldInfo> fieldInfos = getFieldInfos(typeElement);
 
-
-          if (!isConstant(variableElement)) {
-            TypeKind kind = variableElement.asType().getKind();
-
-            fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
-                createGetter(variableElement)));
-          }
-        }
         try {
           writeHelper(typeElement.getQualifiedName().toString(), fieldInfos);
         } catch (IOException e1) {
@@ -62,6 +53,37 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
     }
 
     return true;
+  }
+
+  private List<FieldInfo> getFieldInfos(TypeElement typeElement) {
+    List<FieldInfo> fieldInfos;
+    TypeElement superClassTypeElement = getSuperClassTypeElement(typeElement);
+
+    boolean processSuperClass = superClassTypeElement != null
+        && !superClassTypeElement.getQualifiedName().equals(Object.class.getName().toString());
+    if (processSuperClass) {
+      fieldInfos = getFieldInfos(superClassTypeElement);
+      for (VariableElement variableElement : ElementFilter
+          .fieldsIn(typeElement.getEnclosedElements())) {
+        if (!isConstant(variableElement)) {
+          TypeKind kind = variableElement.asType().getKind();
+          fieldInfos.add(new FieldInfo(variableElement.getSimpleName().toString(), kind,
+              createGetter(variableElement)));
+        }
+      }
+    } else {
+      fieldInfos = new ArrayList<>();
+    }
+
+    return fieldInfos;
+  }
+
+  private TypeElement getSuperClassTypeElement(TypeElement typeElement) {
+    TypeMirror supperClassMirror = typeElement.getSuperclass();
+    if (supperClassMirror.getKind() == TypeKind.NONE) {
+      return null;
+    }
+    return (TypeElement) processingEnv.getTypeUtils().asElement(supperClassMirror);
   }
 
   private boolean isConstant(VariableElement variableElement) {
