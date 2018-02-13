@@ -1,11 +1,12 @@
 package net.vergien.beanautoutils.processor;
 
+import net.vergien.beanautoutils.annotation.Generated;
+
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 import javax.lang.model.type.TypeKind;
 
 @Generated(value = "net.vergien.beanautoutils.processor.BeanAutoUtilsProcessor")
