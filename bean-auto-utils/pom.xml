@@ -7,25 +7,11 @@
 	</parent>
 	<artifactId>bean-auto-utils</artifactId>
 
-	<properties>
-		<auto-service.version>1.0-rc3</auto-service.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.auto.service</groupId>
 			<artifactId>auto-service</artifactId>
-			<version>${auto-service.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</build>
 </project>

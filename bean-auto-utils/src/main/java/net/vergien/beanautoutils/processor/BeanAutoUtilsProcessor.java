@@ -60,7 +60,7 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
     TypeElement superClassTypeElement = getSuperClassTypeElement(typeElement);
 
     boolean processSuperClass = superClassTypeElement != null
-        && !superClassTypeElement.getQualifiedName().equals(Object.class.getName().toString());
+        && !superClassTypeElement.getQualifiedName().equals(Object.class.getName());
     if (processSuperClass) {
       fieldInfos = getFieldInfos(superClassTypeElement);
       for (VariableElement variableElement : ElementFilter
