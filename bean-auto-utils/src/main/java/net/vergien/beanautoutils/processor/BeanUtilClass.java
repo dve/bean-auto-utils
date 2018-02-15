@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Generated;
 import javax.lang.model.type.TypeKind;
 
-@Generated(value = "net.vergien.beanautoutils.processor.BeanAutoUtilsProcessor")
 public class BeanUtilClass {
   public static final String LINE_BREAK = System.getProperty("line.separator");
 
