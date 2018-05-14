@@ -4,7 +4,7 @@ import java.util.List;
 import net.vergien.beanautoutils.annotation.Bean;
 
 @Bean
-public class Demo {
+public class Demo<T> {
   public static final String A_CONSTANT = "This never changes.";
   private int intMember;
   private boolean boolenMember;
@@ -15,13 +15,16 @@ public class Demo {
   private byte byteMember;
   private int[] arrayMember;
   private List<String> nonPrimitiveMember;
+  private T typeVarMember;
 
   @Override
   public boolean equals(Object obj) {
     return DemoBeanUtil.doEquals(this, obj);
   }
 
-
+  public T getTypeVarMember() {
+    return typeVarMember;
+  }
 
   public byte getByteMember() {
     return byteMember;

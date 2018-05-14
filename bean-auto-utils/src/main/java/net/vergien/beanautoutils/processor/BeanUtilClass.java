@@ -1,7 +1,5 @@
 package net.vergien.beanautoutils.processor;
 
-import net.vergien.beanautoutils.annotation.Generated;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -9,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.lang.model.type.TypeKind;
+
+import net.vergien.beanautoutils.annotation.Generated;
 
 public class BeanUtilClass {
   public static final String LINE_BREAK = System.getProperty("line.separator");
@@ -139,6 +139,7 @@ public class BeanUtilClass {
           builder.append("    }");
           break;
         case DECLARED:
+         case TYPEVAR:
           builder.append("    if (");
           builder.append(getterCall);
           builder.append(" == null) {");
