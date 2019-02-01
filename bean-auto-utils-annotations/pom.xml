@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.vergien.bau</groupId>
 		<artifactId>bean-auto-utils-parent</artifactId>
-		<version>0.0.10-SNAPSHOT</version>
+		<version>0.0.10</version>
 	</parent>
 	<artifactId>bean-auto-utils-annotations</artifactId>
 </project>
