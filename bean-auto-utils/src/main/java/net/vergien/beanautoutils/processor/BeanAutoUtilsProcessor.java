@@ -47,7 +47,7 @@ public class BeanAutoUtilsProcessor extends AbstractProcessor {
           writeHelper(typeElement.getQualifiedName().toString(), fieldInfos);
         } catch (IOException e1) {
           e1.printStackTrace();
-          error("Failure writing code", typeElement);
+          error("Failure writing code: " + e1.getMessage(), typeElement);
         }
       }
     }
