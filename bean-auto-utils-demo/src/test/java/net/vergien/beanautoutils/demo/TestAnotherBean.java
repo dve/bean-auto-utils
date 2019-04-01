@@ -1,7 +1,7 @@
 package net.vergien.beanautoutils.demo;
 
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class TestAnotherBean {
 
@@ -9,7 +9,7 @@ public class TestAnotherBean {
   public void test() {
     AnotherBean a = new AnotherBean();
     AnotherBean b = new AnotherBean();
-    assertTrue("AnotherBeanUtil.class should exist", a.equals(b));
+    assertTrue(a.equals(b), "AnotherBeanUtil.class should exist");
   }
 
 }
