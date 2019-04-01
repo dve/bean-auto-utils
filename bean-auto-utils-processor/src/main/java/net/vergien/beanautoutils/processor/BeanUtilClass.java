@@ -89,7 +89,9 @@ public class BeanUtilClass {
     lineBreak();
     builder.append("    }");
     lineBreak();
-    builder.append("    if (lhs.getClass() != obj.getClass()) {");
+      builder.append("    if (!(obj instanceof ");
+      builder.append(simpleClassName);
+      builder.append(")) {");
     lineBreak();
     builder.append("      return false;");
     lineBreak();
